@@ -64,7 +64,9 @@ VALUES
 (3, 10, 7, 1.19, 0.02, 'high acidity'),
 (5, 2, 2, 79.99, 2.17, 'customer transitioning from Cobol to Cloud Loboc'),
 (5, 6, 1, 4.49, 0.00, 'heavy Scoville Units'),
-(5, 5, 1, 14.99, 1.89, 'financial planning');
+(5, 5, 1, 14.99, 1.89, 'financial planning'),
+(6, 10, 2, 399999.95, 25000.00, 'Starship construction'),
+(6, 7, 1, 3.49, 0.00, 'Test for magnetism before use');
 
 INSERT INTO Payments ( OrderID, PaymentDate, PaymentType, PaymentRef, Amount, Notes )
 VALUES
