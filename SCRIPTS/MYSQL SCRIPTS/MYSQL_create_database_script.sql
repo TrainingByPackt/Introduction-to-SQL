@@ -10,7 +10,8 @@ CREATE TABLE Customers
 	Address CHAR(250) NULL,
 	Email CHAR(200) NULL,
 	Phone CHAR(50) NULL,
-	Notes TEXT(1024) NULL,
+	Notes VARCHAR(750) NULL,
+	BalanceNotes VARCHAR(750) NULL,
     PRIMARY KEY (CustomerID)
 );
 
@@ -22,7 +23,7 @@ CREATE TABLE OrderItems
 	Quantity INT NOT NULL,
 	UnitPrice DECIMAL(10, 2) NOT NULL,
 	Discount DECIMAL(10, 2) NULL,
-	Notes TEXT(1024) NULL,
+	Notes VARCHAR(750) NULL,
     PRIMARY KEY (OrderItemID)
 );
 
@@ -34,7 +35,7 @@ CREATE TABLE Orders
 	OrderDate DATETIME NOT NULL,
 	ShipmentDate DATETIME NULL,
 	OrderStatus CHAR(10) NULL,
-	Notes TEXT(1024) NULL,
+	Notes VARCHAR(750) NULL,
     PRIMARY KEY (OrderID)
 );
 
@@ -46,7 +47,7 @@ CREATE TABLE Payments
 	PaymentType CHAR(50) NULL,
 	PaymentRef CHAR(50) NULL,
 	Amount DECIMAL(10, 2) NOT NULL,
-	Notes TEXT(1024) NULL,
+	Notes VARCHAR(750) NULL,
     PRIMARY KEY (PaymentID, OrderID)
 );
 
@@ -54,7 +55,7 @@ CREATE TABLE ProductCategories
 (
 	ProductCategoryID INT NOT NULL AUTO_INCREMENT,
 	ProductCategoryName CHAR(50) NOT NULL,
-	Notes TEXT(1024) NULL,
+	Notes VARCHAR(750) NULL,
     PRIMARY KEY (ProductCategoryID)
 );
 
@@ -69,7 +70,7 @@ CREATE TABLE Products
 	AvailableQuantity INT NOT NULL,
 	WholesalePrice DECIMAL(10, 2) NOT NULL,
 	UnitKGWeight DECIMAL(10, 5) NULL,
-	Notes TEXT(1024) NULL,
+	Notes VARCHAR(750) NULL,
     PRIMARY KEY (ProductID)
 );
 
@@ -81,7 +82,7 @@ CREATE TABLE Suppliers
 	Address CHAR(50) NULL,
 	PhoneNumber CHAR(50) NULL,
 	ContactPerson CHAR(50) NULL,
-	Notes TEXT(1024) NULL,
+	Notes VARCHAR(750) NULL,
     PRIMARY KEY (SupplierID)
 );
 

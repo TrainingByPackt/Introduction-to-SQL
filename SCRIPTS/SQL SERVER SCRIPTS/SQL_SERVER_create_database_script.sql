@@ -5,6 +5,9 @@ IF EXISTS(select * from sys.databases where name='PACKT_ONLINE_SHOP')
 DROP DATABASE PACKT_ONLINE_SHOP
 GO
 
+/*	If the directory for the database component files does not exist, create it */
+EXEC master.dbo.xp_create_subdir N'C:\Packt projects\PACKT_ONLINE_SHOP\SQL_SERVER\'
+
 /****** Object:  Database [PACKT_ONLINE_SHOP]    Script Date: 4/6/2019 3:26:23 PM ******/
 CREATE DATABASE [PACKT_ONLINE_SHOP]
  CONTAINMENT = NONE
@@ -29,12 +32,13 @@ CREATE TABLE [dbo].[Customers](
 	[Address] [nvarchar](250) NULL,
 	[Email] [nvarchar](200) NULL,
 	[Phone] [nvarchar](50) NULL,
-	[Notes] [ntext] NULL,
+	[Notes] [nvarchar](750) NULL,
+	[BalanceNotes] [nvarchar](750)
  CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 /****** Object:  Table [dbo].[OrderItems]    Script Date: 4/6/2019 3:25:46 PM ******/
@@ -50,12 +54,12 @@ CREATE TABLE [dbo].[OrderItems](
 	[Quantity] [int] NOT NULL,
 	[UnitPrice] [money] NOT NULL,
 	[Discount] [money] NULL,
-	[Notes] [ntext] NULL,
+	[Notes] [nvarchar](750) NULL
  CONSTRAINT [PK_OrderItems] PRIMARY KEY CLUSTERED 
 (
 	[OrderItemID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 /****** Object:  Table [dbo].[Orders]    Script Date: 4/6/2019 3:25:46 PM ******/
@@ -73,12 +77,12 @@ CREATE TABLE [dbo].[Orders](
 	[OrderDate] [datetime] NOT NULL,
 	[ShipmentDate] [datetime] NULL,
 	[OrderStatus] [char](10) NULL,
-	[Notes] [ntext] NULL,
+	[Notes] [nvarchar](750) NULL
  CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
 (
 	[OrderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 SET ANSI_PADDING OFF
@@ -96,13 +100,14 @@ CREATE TABLE [dbo].[Payments](
 	[PaymentType] [nvarchar](50) NULL,
 	[PaymentRef] [nvarchar](50) NULL,
 	[Amount] [money] NULL,
-	[Notes] [ntext] NULL,
+	[Notes] [nvarchar](750) NULL,
+	[BalanceNotes] NVARCHAR(750) NULL
  CONSTRAINT [PK_Payments] PRIMARY KEY CLUSTERED 
 (
 	[PaymentID] ASC,
 	[OrderID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 /****** Object:  Table [dbo].[ProductCategories]    Script Date: 4/6/2019 3:25:46 PM ******/
@@ -114,12 +119,12 @@ GO
 CREATE TABLE [dbo].[ProductCategories](
 	[ProductCategoryID] [int] IDENTITY(1,1) NOT NULL,
 	[ProductCategoryName] [nvarchar](50) NOT NULL,
-	[Notes] [ntext] NULL,
+	[Notes] [nvarchar](750) NULL,
  CONSTRAINT [PK_ProductCategory] PRIMARY KEY CLUSTERED 
 (
 	[ProductCategoryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 /****** Object:  Table [dbo].[Products]    Script Date: 4/6/2019 3:25:46 PM ******/
@@ -138,12 +143,12 @@ CREATE TABLE [dbo].[Products](
 	[AvailableQuantity] [int] NOT NULL,
 	[WholesalePrice] [money] NOT NULL,
 	[UnitKGWeight] [float] NULL,
-	[Notes] [ntext] NULL,
+	[Notes] [nvarchar](750) NULL,
  CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
 (
 	[ProductID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 /****** Object:  Table [dbo].[Suppliers]    Script Date: 4/6/2019 3:25:46 PM ******/
@@ -159,12 +164,12 @@ CREATE TABLE [dbo].[Suppliers](
 	[Address] [nvarchar](50) NULL,
 	[PhoneNumber] [nvarchar](50) NULL,
 	[ContactPerson] [nvarchar](50) NULL,
-	[Notes] [ntext] NULL,
+	[Notes] [nvarchar](750) NULL,
  CONSTRAINT [PK_Suppliers] PRIMARY KEY CLUSTERED 
 (
 	[SupplierID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 
