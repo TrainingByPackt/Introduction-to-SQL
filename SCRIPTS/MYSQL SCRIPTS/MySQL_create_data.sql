@@ -1,4 +1,4 @@
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 INSERT INTO customers ( FirstName, LastName, Address, Email, Phone, Notes )
 VALUES
