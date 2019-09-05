@@ -1,0 +1,69 @@
+Example 1:
+
+--How to define a foreign key on CUSTOMER_ID of ORDERS table referring to CUSTOMERID of CUSTOMERS table.
+
+DROP DATABASE   IF     EXISTS PACKT_ONLINE_SHOP; 
+CREATE DATABASE IF NOT EXISTS PACKT_ONLINE_SHOP; 
+USE PACKT_ONLINE_SHOP; 
+CREATE TABLE Customers 
+( 
+CustomerID INT NOT NULL AUTO_INCREMENT, 
+FirstName CHAR(50) NOT NULL, 
+LastName CHAR(50) NOT NULL, 
+Address CHAR(250) NULL, 
+Email CHAR(200) NULL, 
+Phone CHAR(50) NULL, 
+Notes VARCHAR(750) NULL, 
+BalanceNotes VARCHAR(750) NULL, 
+PRIMARY KEY (CustomerID) 
+); 
+/*
+Note:
+A foreign key always refer to a primary key.
+A table can have multiple foreign key
+Insert command only operates on those rows of the CHILD table for which corresponding rows exist in the PARENT table
+Delete command only operates on the rows from the PARENT table for which there are no corresponding records in the CHILD table.
+*/
+
+CREATE TABLE Orders 
+( 
+OrderID INT NOT NULL AUTO_INCREMENT, 
+CustomerID INT NOT NULL, 
+OrderNumber CHAR(50) NOT NULL, 
+OrderDate DATETIME NOT NULL, 
+ShipmentDate DATETIME NULL, 
+OrderStatus CHAR(10) NULL, 
+Notes VARCHAR(750) NULL, 
+PRIMARY KEY (OrderID), 
+FOREIGN KEY FK_Customer_CusomterID(CustomerID) REFERENCES Customers(CustomerID) 
+); 
+
+Example 2:
+
+--Create OrderItems table and add define a foreign key on PRODUCTID of OrderItems table referring to PRODUCTID of ORDERS table.
+
+CREATE TABLE OrderItems 
+( 
+OrderItemID INT NOT NULL AUTO_INCREMENT, 
+OrderID INT NOT NULL, 
+ProductID INT NOT NULL, 
+Quantity INT NOT NULL, 
+UnitPrice DECIMAL(10, 2) NOT NULL, 
+Discount DECIMAL(10, 2) NULL, 
+Notes VARCHAR(750) NULL, 
+PRIMARY KEY (OrderItemID) 
+); 
+
+ALTER TABLE OrderItems 
+ADD FOREIGN KEY (ProductID) REFERENCES Products(ProductID); 
+
+Example 3:
+
+--To drop a foreign key ProductID from OrderItems, you would use the ALTER TABLE statement, like so: 
+--In the context of our example, the statement would be: 
+
+ALTER TABLE OrderItems 
+DROP FOREIGN KEY ProductID 
+
+
+
