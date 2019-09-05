@@ -6,7 +6,7 @@ CREATE TABLE Customers
 (
 	CustomerID INT NOT NULL AUTO_INCREMENT,
 	FirstName CHAR(50) NULL,
-    MiddleName CHAR(50) NULL,
+    	MiddleName CHAR(50) NULL,
 	LastName CHAR(50) NULL,
 	Address CHAR(250) NULL,
 	Email CHAR(200) NULL,
