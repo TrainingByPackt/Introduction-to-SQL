@@ -72,7 +72,7 @@ USE PACKT_ONLINE_SHOP;
 
 SELECT	PaymentID, OrderID, PaymentDate, PaymentType, PaymentRef,
 		Amount, Notes, BalanceNotes
-FROM		payments
+FROM		Payments
 WHERE	amount > 50.00;
 
 
@@ -301,7 +301,7 @@ FROM		customers;
 
 --	SQL Server:
 
-INSERT	products (ProductCategoryID, SupplierID, ProductName, ProductImage, NetRetailPrice,
+INSERT	Products (ProductCategoryID, SupplierID, ProductName, ProductImage, NetRetailPrice,
 		AvailableQuantity, WholesalePrice, UnitKGWeight, Notes)
 VALUES	(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'handle with care'),
 		(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'handle with care'),
@@ -314,14 +314,14 @@ SELECT	ProductID, ProductCategoryID, SupplierID, ProductName, ProductImage,
 FROM		Products;
 
 
-DELETE FROM products WHERE ProductID > 11;
+DELETE FROM Products WHERE ProductID > 11;
 
 
 WITH demoCTE AS
 (
 	SELECT	ProductID, ProductCategoryID, SupplierID, ProductName, NetRetailPrice,
 			AvailableQuantity, WholesalePrice, UnitKGWeight, Notes
-	FROM		products
+	FROM		Products
 )
 
 SELECT	ProductID, ProductCategoryID, SupplierID, ProductName, NetRetailPrice,
@@ -341,7 +341,7 @@ WITH demoCTE AS
 				AvailableQuantity, WholesalePrice, UnitKGWeight, Notes
 			ORDER BY ProductID
 			) AS RowNumber
-	FROM products
+	FROM Products
 )
 
 SELECT	ProductID, ProductCategoryID, SupplierID, ProductName, NetRetailPrice,
@@ -362,20 +362,20 @@ AS
 				AvailableQuantity, WholesalePrice, UnitKGWeight, Notes
 				ORDER BY ProductID
 			) AS RowNumber
-	FROM products
+	FROM Products
 )
 
 DELETE FROM	demoCTE
 WHERE		RowNumber > 1;
 
-SELECT * FROM products;
+SELECT * FROM Products;
 
 
 --	MySQL:
 
 USE PACKT_ONLINE_SHOP;
 
-INSERT products (ProductCategoryID, SupplierID, ProductName, ProductImage, NetRetailPrice, AvailableQuantity, WholesalePrice, UnitKGWeight, Notes)
+INSERT Products (ProductCategoryID, SupplierID, ProductName, ProductImage, NetRetailPrice, AvailableQuantity, WholesalePrice, UnitKGWeight, Notes)
 
 VALUES(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'handle with care'),
 		(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'handle with care'),
@@ -390,7 +390,7 @@ WITH demoCTE AS
 (
 	SELECT	ProductID, ProductCategoryID, SupplierID, ProductName, NetRetailPrice,
 			AvailableQuantity, WholesalePrice, UnitKGWeight, Notes
-	FROM		products
+	FROM		Products
 
 )
 
@@ -409,7 +409,7 @@ WITH demoCTE AS
 							ORDER BY ProductID) AS RowNumber,
 			ProductID, ProductCategoryID, SupplierID, ProductName, ProductImage,
 			NetRetailPrice, AvailableQuantity, WholesalePrice, UnitKGWeight, Notes
-	FROM	products)
+	FROM	Products)
 
 SELECT	RowNumber, ProductID, ProductCategoryID, SupplierID, ProductName,
 		NetRetailPrice, AvailableQuantity, WholesalePrice, UnitKGWeight, Notes
@@ -429,14 +429,14 @@ AS
 			AvailableQuantity, WholesalePrice, UnitKGWeight, Notes
 			ORDER BY ProductID
 			) AS RowNumber
-	FROM products
+	FROM Products
 )
 
-DELETE FROM	products
-USING		products JOIN demoCTE ON products.ProductID = demoCTE.ProductID
+DELETE FROM	Products
+USING		Products JOIN demoCTE ON Products.ProductID = demoCTE.ProductID
 WHERE		demoCTE.RowNumber > 1;
 
-SELECT * FROM products;
+SELECT * FROM Products;
 
 
 DELETE FROM	demoCTE
@@ -450,7 +450,7 @@ WHERE		RowNumber > 1;
 USE PACKT_ONLINE_SHOP;
 
 SELECT	ProductID, Availablequantity
-FROM		products
+FROM		Products
 WHERE	productid = 3;
 
 
@@ -462,12 +462,12 @@ WHERE	ProductID = 3
 USE PACKT_ONLINE_SHOP;
 
 SELECT	ProductID, Availablequantity
-FROM		products
+FROM		Products
 WHERE	Productid = 3;
 
 BEGIN TRANSACTION;
 
-UPDATE	products
+UPDATE	Products
 SET		AvailableQuantity = 150--Original value = 1000
 WHERE	ProductID = 3
 
@@ -480,12 +480,12 @@ ROLLBACK TRANSACTION;
 USE PACKT_ONLINE_SHOP;
 
 SELECT	ProductID, Availablequantity
-FROM		products
+FROM		Products
 WHERE	Productid = 3;
 
 START TRANSACTION;
 
-UPDATE	products
+UPDATE	Products
 SET		AvailableQuantity = 150#Original value = 1000
 WHERE ProductID = 3;
 
