@@ -5,19 +5,19 @@
 
 --	SQL SERVER:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	ProductID, ProductName, UPPER(ProductName) AS 'UPPER CASE PRODUCT NAME'
 FROM		Products;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	OrderItemID, Quantity, UnitPrice, STR((Quantity * UnitPrice), 10, 2) AS 'Quantity * UnitPrice'
 FROM		OrderItems;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	OrderItemID, Quantity, UnitPrice, LTRIM(RTRIM(STR((Quantity * UnitPrice), 10, 2))) AS 'Quantity * UnitPrice'
 FROM		OrderItems;
@@ -25,7 +25,7 @@ FROM		OrderItems;
 
 /****** EXERCISE 1 ******/
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT OrderID, LTRIM(RTRIM(CONCAT(STR(Quantity), ' Ordered: ', UPPER(Notes))))
 AS 'ITEM_QUANTITY_ORDERED_AND_NOTES'
@@ -34,20 +34,20 @@ FROM OrderItems;
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	ProductID, ProductName, UPPER(ProductName) AS 'PRODUCT NAME'
 FROM		Products;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	OrderItemID, Quantity, UnitPrice,
 		CONCAT('     ', CAST((Quantity * UnitPrice) AS CHAR), '   ') AS 'Quantity * UnitPrice'
 FROM		OrderItems;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	OrderItemID, Quantity, UnitPrice,
 		CONCAT('     ', CAST((Quantity * UnitPrice) AS CHAR), '   ') AS 'Quantity * UnitPrice',
@@ -58,7 +58,7 @@ FROM		OrderItems;
 
 /****** EXERCISE 2 ******/
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	OrderID,
 		LTRIM(RTRIM(CONCAT(CAST(Quantity AS CHAR), ' Ordered: ', UPPER(Notes))))
@@ -68,7 +68,7 @@ FROM		OrderItems;
 
 --	SQL Server and MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	PaymentID, OrderID, PaymentDate, PaymentType, PaymentRef,
 		Amount, Notes, BalanceNotes
@@ -76,7 +76,7 @@ FROM		payments
 WHERE	amount > 50.00;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	CustomerID, FirstName, MiddleName, LastName, Address,
 		Email, Phone, Notes
@@ -84,7 +84,7 @@ FROM		customers
 WHERE	email = 'jtkirk@NCC1701Enterprise.gov';
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	*
 FROM		customers
@@ -109,14 +109,14 @@ WHERE	C.email LIKE '%' + @emailString + '%'
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 DELIMITER $$
 
 CREATE PROCEDURE `spFilterCustomers` (IN emailString VARCHAR(100))
 BEGIN
 
-	# to test:USEpackt_online_shop;
+	# to test:USEPACKT_ONLINE_SHOP;
 	# CALL spFilterCustomers('NCC1701Enterprise.gov');
 
 	SELECT	C.CustomerID, C.FirstName, C.LastName, C.Address,
@@ -142,7 +142,7 @@ WHERE	O.Notes LIKE '%CUST%' AND
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	O.OrderID, O.CustomerID, O.OrderNumber, O.OrderDate,
 		O.ShipmentDate, O.OrderStatus, O.Notes
@@ -155,7 +155,7 @@ WHERE	O.Notes LIKE '%CUST%' AND
 
 --	SQL Server:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	C.FirstName + ' ' + C.LastName as 'Name', C.Phone,
 		O.Notes AS 'Order Notes'
@@ -166,7 +166,7 @@ ORDER BY	C.LastName;
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	CONCAT(C.FirstName, ' ', C.LastName) as 'Name', C.Phone,
 		O.Notes AS 'Order Notes'
@@ -177,7 +177,7 @@ ORDER BY	C.LastName;
 
 --	SQL Server:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	C.FirstName + ' ' + C.LastName as 'Name', C.Phone,
 		ISNULL(O.Notes, 'NO ORDER NOTES FOUND') AS 'Order Notes'
@@ -190,7 +190,7 @@ ORDER BY	C.LastName;
 
 --	SQL Server:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	P.ProductID, P.ProductName,
 		ISNULL(OI.OrderItemID, 0) AS 'OrderItemID'
@@ -199,7 +199,7 @@ FROM		Products P LEFT OUTER JOIN OrderItems OI ON
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	CONCAT(C.FirstName, ' ', C.LastName) AS 'Name', C.Phone,
 		IFNULL(O.Notes, 'NO ORDER NOTES FOUND') AS 'Order Notes'
@@ -212,7 +212,7 @@ ORDER BY	C.LastName;
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	P.ProductID, P.ProductName,
 		IFNULL(OI.OrderItemID, 0) AS 'OrderItemID'
@@ -243,7 +243,7 @@ DECLARE @val2 BIT = 0 -- FALSE
 SELECT @val1 & NULL & @val2 AS "TRUE + NULL + FALSE"
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 --	SQL Server and MySQL:
 
@@ -252,7 +252,7 @@ SELECT	FirstName, MiddleName, LastName,
 FROM		Customers;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 
 SELECT	COALESCE(FirstName, ' ') AS 'FirstName',
@@ -279,7 +279,7 @@ SELECT	COALESCE(@intVal1, -5) + 4;
 
 --	SQL Server:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	COALESCE(FirstName, ' ') + ' ' +
 		COALESCE(MiddleName, 'SUBSTITUTE MIDDLE NAME') + ' ' +
@@ -291,7 +291,7 @@ FROM		customers;
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	CONCAT(COALESCE(FirstName, ' '), ' ',
 		COALESCE(MiddleName, 'SUBSTITUTE MIDDLE NAME'), ' ',
@@ -308,7 +308,7 @@ VALUES	(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'ha
 		(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'handle with care'),
 		(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'handle with care'),
 		(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'handle with care');
-		
+
 SELECT	ProductID, ProductCategoryID, SupplierID, ProductName, ProductImage,
 		NetRetailPrice, AvailableQuantity, WholesalePrice, UnitKGWeight, Notes
 FROM		Products;
@@ -329,7 +329,7 @@ SELECT	ProductID, ProductCategoryID, SupplierID, ProductName, NetRetailPrice,
 FROM		demoCTE
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 WITH demoCTE AS
 
@@ -350,7 +350,7 @@ FROM		demoCTE
 ORDER BY	ProductID;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 WITH demoCTE
 AS
@@ -373,7 +373,7 @@ SELECT * FROM products;
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 INSERT products (ProductCategoryID, SupplierID, ProductName, ProductImage, NetRetailPrice, AvailableQuantity, WholesalePrice, UnitKGWeight, Notes)
 
@@ -384,7 +384,7 @@ VALUES(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'han
 		(3, 2, 'antimatter bottle', NULL, 399999.95, 6128, 149999.99, 521.38, 'handle with care');
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 WITH demoCTE AS
 (
@@ -399,7 +399,7 @@ SELECT	ProductID, ProductCategoryID, SupplierID, ProductName, NetRetailPrice,
 FROM		demoCTE;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 WITH demoCTE AS
 (
@@ -417,7 +417,7 @@ FROM		demoCTE
 ORDER BY	RowNumber;
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 WITH demoCTE
 AS
@@ -447,7 +447,7 @@ WHERE		RowNumber > 1;
 
 --	SQL Server:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	ProductID, Availablequantity
 FROM		products
@@ -459,7 +459,7 @@ SET		AvailableQuantity = 150
 WHERE	ProductID = 3
 
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	ProductID, Availablequantity
 FROM		products
@@ -477,7 +477,7 @@ ROLLBACK TRANSACTION;
 
 --	MySQL:
 
-USE packt_online_shop;
+USE PACKT_ONLINE_SHOP;
 
 SELECT	ProductID, Availablequantity
 FROM		products
