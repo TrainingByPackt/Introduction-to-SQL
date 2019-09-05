@@ -1,7 +1,7 @@
 USE [PACKT_ONLINE_SHOP]
 GO
 
-INSERT INTO customers ( FirstName, LastName, [Address], Email, Phone, Notes )
+INSERT INTO Customers ( FirstName, LastName, [Address], Email, Phone, Notes )
 VALUES
 ('Joe', 'Doaks', '2356 Elm St.', 'joedoaks@sfghwert.com', '(310) 555-1212', 'A note'),
 ('Paul', 'Atreides', '123 Caladan Drive', 'patreides@sietchtabr.com', '(818) 555-3678', 'Outworlder, now a Fremen'),
@@ -13,7 +13,7 @@ VALUES
 ('Leto', 'Atreides', '1870 Arrakeen Ct.', 'latreides@arrakeen.org', '(310) 555-5462', 'Spice dealer')
 
 
-INSERT INTO suppliers ( SupplierName, Country, [Address], PhoneNumber, ContactPerson, Notes )
+INSERT INTO Suppliers ( SupplierName, Country, [Address], PhoneNumber, ContactPerson, Notes )
 VALUES
 ('Acme Systems', 'Switzerland', '123 Capital Drive', '(818) 555-3456', 'Smith Johns', 'spaceship company'),
 ('Amalgamated Software', 'Antarctica', '771 South Pole Ave.', '(415) 555-2347', 'Smith Johns', 'software company'),
@@ -77,5 +77,3 @@ VALUES
 (1, '20170301', 'credit card', 'I3G2V7', $75.00, 'payment received' ),
 (2, '20100105', 'check', 'SRT2Z7', $83.50, 'partial payment'),
 (2, '20100222', 'cash', 'DET281', $12.79, 'partial payment')
-
-
