@@ -1,0 +1,276 @@
+Example 1:
+
+/* How to perform a simple insert into the Department table*/
+
+CREATE TABLE department ( 
+    departmentNo INT PRIMARY KEY, 
+    departmentName VARCHAR(20) NOT NULL, 
+    departmentLoc VARCHAR(50) NOT NULL 
+); 
+
+/* Insert statement */
+
+INSERT INTO department ( 
+    departmentNo, 
+    departmentName, 
+    departmentLoc 
+) 
+VALUES ( 
+1, 
+'Engg', 
+'Texas' 
+); 
+
+
+Example 2:
+
+/* Perform multiple insert statement*/
+
+INSERT INTO department 
+            (departartmentno, 
+             departmentname, 
+             departmentloc) 
+VALUES      ( 40, 
+              'Sales', 
+              'NJ' ), 
+            ( 50, 
+              'Marketing', 
+              'MO' ), 
+            ( 60, 
+              'Testing', 
+              'MN' ); 
+              
+ Example 3:
+ 
+ /* MSSQL Server - Perform insert along with a default columns */
+ 
+ CREATE TABLE departmentTwo ( 
+    departmentNo INT IDENTITY(10, 10) PRIMARY KEY, 
+    departmentName VARCHAR(20) NOT NULL, 
+    departmentLoc VARCHAR(50) DEFAULT 'NJ' 
+    departmentEstDate DATETIME DEFAULT GETDATE() 
+);
+
+INSERT INTO department 
+            (departmentname) 
+VALUES      ( 'MyDepartment' ); 
+
+ Example 4:
+ 
+ /* MySQL Server - Perform insert along with a default columns */
+ 
+ CREATE TABLE departmenttwo 
+  ( 
+     departmentno      INT PRIMARY KEY auto_increment, 
+     departmentname    VARCHAR(20) NOT NULL, 
+     departmentloc     VARCHAR(50) DEFAULT 'NJ', 
+     departmentestdate TIMESTAMP DEFAULT now() 
+  ); 
+  
+INSERT INTO department 
+            (departmentname) 
+VALUES      ( 'MyDepartment' ); 
+
+
+Example 5:
+
+--you can add multiple rows into the table, and the default columns will pick their values accordingly. Say, you would like to add two more departments, Administration and IT. 
+
+INSERT INTO departmentTwo 
+            (departmentname, 
+             departmentloc) 
+VALUES      ( 'Administration', 
+              DEFAULT ), 
+            ( 'IT', 
+              DEFAULT ); 
+  
+ Example 6:
+ 
+ --you can also use a SELECT statement to add multiple records into a table. Here is how: 
+
+INSERT INTO departmentTemp(departmentName,departmentLoc) 
+SELECT departmentName, departmentLoc FROM department; 
+
+SELECT * from DepartmentTemp
+
+Example 7:
+
+--let’s delete the rows where departmentNo is ‘>’ 4. This will delete the two rows where departmentNo is 5 and 6.
+
+DELETE from department where departmentNo>4; 
+
+Example 8:
+
+-- Auto increment scenario
+
+insert into department(departmentname,departmentLoc) values('Sales','LV'); 
+
+--On selecting the rows, we can see that auto_increment column starts at 7. 
+
+mysql> select * from department; 
+/*
+
++--------------+----------------+---------------+---------------------+ 
+
+| departmentNo | departmentName | departmentLoc | departmentEstDate   | 
+
++--------------+----------------+---------------+---------------------+ 
+
+|            1 | engg           | NJ            | 2019-05-27 11:56:53 | 
+
+|            2 | engg           | NJ            | 2019-05-27 11:57:10 | 
+
+|            3 | engg           | TX            | 2019-05-27 11:57:24 | 
+
+|            4 | engg           | NJ            | 2019-05-27 11:59:40 | 
+
+|            7 | Sales          | LV            | 2019-05-27 12:03:42 | 
+
++--------------+----------------+---------------+---------------------+ 
+
+5 rows in set (0.00 sec) 
+*/
+
+Example 9:
+
+--In-order to reset the auto_increment column, run the following ALTER STATEMENT 
+
+mysql> ALTER TABLE department AUTO_INCREMENT = 5; 
+
+--Now, Perform the insert statement
+
+mysql> insert into department(departmentname,departmentLoc) values('Sales','LV'); 
+
+mysql> select * from department; 
+/*
++--------------+----------------+---------------+---------------------+ 
+
+| departmentNo | departmentName | departmentLoc | departmentEstDate   | 
+
++--------------+----------------+---------------+---------------------+ 
+
+|            1 | engg           | NJ            | 2019-05-27 11:56:53 | 
+
+|            2 | engg           | NJ            | 2019-05-27 11:57:10 | 
+
+|            3 | engg           | TX            | 2019-05-27 11:57:24 | 
+
+|            4 | engg           | NJ            | 2019-05-27 11:59:40 | 
+
+|            5 | Sales          | LV            | 2019-05-27 12:13:11 | 
+
++--------------+----------------+---------------+---------------------+ 
+
+5 rows in set (0.00 sec) 
+
+ */
+ 
+ Example 10:
+ 
+/*
+Insert using stored procedure 
+
+Note: The below section is applicable only to MSSQL Server. Unfortunately, the syntax is not supported in MySQL. The following SQL require SQL 2017 
+ */
+ 
+ CREATE TABLE tlog_spaceused 
+  ( 
+     database_name     VARCHAR(200), 
+     database_size     VARCHAR(20), 
+     unallocated_space VARCHAR(18), 
+     reserved          VARCHAR(20), 
+     data              VARCHAR(20), 
+     index_size        VARCHAR(20), 
+     unused            VARCHAR(20) 
+  ); 
+
+INSERT INTO tlog_spaceused 
+EXEC Sp_msforeachdb 
+  @command = "use ? exec sp_spaceused  @oneresultset = 1"; 
+
+SELECT * 
+FROM   tlog_spaceused; 
+
+
+
+Example 11:
+
+/* Update Example*/
+
+--To demonstrate, tb_employess table is created with empno and emailaddress columns
+
+CREATE TABLE tb_employees 
+  ( 
+     empno        NUMBER, 
+     emailaddress VARCHAR2(20) 
+  ) 
+
+INSERT INTO tb_employees 
+VALUES     (1, 
+            'Steve.Cross@awesomeness.com'), 
+            (2, 
+             'Lois.Jennings@awesomeness.com'), 
+            (3, 
+             'Ava-May@awesomeness.com'), 
+            (4, 
+             'Charlene.Holloway@awesomeness.com') 
+             
+  mysql> select empno, email from tb_employees; 
+/*
++-------+-----------------------------------+ 
+
+| empno | email                             | 
+
++-------+-----------------------------------+ 
+
+|     1 | Steve.Cross@awesomeness.com       | 
+
+|     2 | Lois.Jennings@awesomeness.com     | 
+
+|     3 | Ava-May@awesomeness.com       | 
+
+|     4 | Charlene.Holloway@awesomeness.com | 
+
++-------+-----------------------------------+ 
+
+4 rows in set (0.00 sec) 
+*/
+
+UPDATE tb_employees 
+SET 
+   EmailAddress = 'Ava-May.Rodgers@awesomenes.com' 
+WHERE empno = 3 
+
+Example 12:
+
+--we are going to change the modified date on all the rows. We do this using the following query: 
+
+mysql> update department set departmentEstDate=now(); 
+
+Example 13:
+
+--You would also like to set their departmentEstdate  to next day. 
+
+mysql> UPDATE Department 
+     SET departmentLoc='GA', 
+     departmentEstDate  = Now()+1; 
+     
+     
+ Example 14:
+ 
+ -- Update using Alias
+ 
+ UPDATE D 
+    SET departmentLoc='GA', 
+    departmentEstDate  = Now()+1 
+FROM department D 
+
+
+Example 15:
+
+--Conditional update of records using WHERE clause 
+
+
+
+
+ 
