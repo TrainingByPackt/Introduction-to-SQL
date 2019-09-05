@@ -1,15 +1,23 @@
 USE PACKT_ONLINE_SHOP;
 
-INSERT INTO Customers ( FirstName, LastName, Address, Email, Phone, Notes )
+INSERT INTO Customers ( FirstName, MiddleName, LastName, Address, Email, Phone, Notes )
 VALUES
-('Joe', 'Doaks', '2356 Elm St.', 'joedoaks@sfghwert.com', '(310) 555-1212', 'A note'),
-('Paul', 'Atreides', '123 Caladan Drive', 'patreides@sietchtabr.com', '(818) 555-3678', 'Outworlder, now a Fremen'),
-('Mr.', 'Spock', '1701 Enterprise Drive', 'mrspock@NCC1701Enterprise.gov', '(717) 555-3457', 'Perceptive naval and science officer'),
-('Joseph', 'Crater', '1313 Mockingbird Lane', 'judgecrater@e56gfwrty.com', '(212) 555-5678', 'Might undisappear any minute . . .'),
-('James', 'Kirk', '1701 Enterprise Drive', 'jtkirk@NCC1701Enterprise.gov', '(717) 555-3457', 'Naval combat veteran'),
-('Luke', 'Skywalker', '456 Tosche Station', 'lskywalker@moseisley.gov', '(213) 555-3421', 'Pilot and mystic'),
-('Chew', 'Bacca', 'Docking Bay 94, Kashyyyk', 'chewbacca@rebelalliance.edu', '(213) 555-8523', 'Executive Officer, Millennium Falcon'),
-('Leto', 'Atreides', '1870 Arrakeen Ct.', 'latreides@arrakeen.org', '(310) 555-5462', 'Spice dealer');
+('Joe', 'Greg', 'Doaks', '2356 Elm St.', 'joedoaks@sfghwert.com', '(310) 555-1212', 'A note'),
+('Paul', 'Muad-Dib', 'Atreides', '123 Caladan Drive', 'patreides@sietchtabr.com', '(818) 555-3678', 'Outworlder, now a Fremen'),
+('Mr.', NULL, 'Spock', '1701 Enterprise Drive', 'mrspock@NCC1701Enterprise.gov', '(717) 555-3457', 'Perceptive naval and science officer'),
+('Joseph', 'Force', 'Crater', '1313 Mockingbird Lane', 'judgecrater@e56gfwrty.com', '(212) 555-5678', 'Might undisappear any minute . . .'),
+('James', 'Tiberias', 'Kirk', '1701 Enterprise Drive', 'jtkirk@NCC1701Enterprise.gov', '(717) 555-3457', 'Naval combat veteran'),
+('Luke', NULL, 'Skywalker', '456 Tosche Station', 'lskywalker@moseisley.gov', '(213) 555-3421', 'Pilot and mystic'),
+('Chew', NULL, 'Bacca', 'Docking Bay 94, Kashyyyk', 'chewbacca@rebelalliance.edu', '(213) 555-8523', 'Executive Officer, Millennium Falcon'),
+('Leto', 'II', 'Atreides', '1870 Arrakeen Ct.', 'latreides@arrakeen.org', '(310) 555-5462', 'Spice dealer'),
+(NULL, 'Paul', 'Jones', '126 Bonhomme Richard Ave.', 'jpjones@bonhommerichard.edu', '(216) 555-6232', 'Admiral'),
+(NULL, 'Han', 'Solo', '6136 Yavin St.', 'hsolo@dagobah.edu', '(345) 555-5434', 'Freighter Pilot'),
+(NULL, NULL, 'Gordon', '21 Mars Drive', 'Gordon@flashgordon.edu', '(260) 555-3461', 'Pilot'),
+(NULL, NULL, 'Zarkov', '55 Mongo Way', 'zarkov@mingofmongo.gov', '(818) 555-3562', 'Physics Researcher'),
+('Gandalf', NULL, NULL, '18 Middle Earth Ave.', 'gan@dalf.gov', '(310) 555-9182', 'Wizard'),
+('Klaatu', NULL, NULL, '33 Nikto Way', 'klaatu@klaatubaradanikto.edu', '(310) 555-0822', 'Droid'),
+('Master', NULL, 'Yoda', '1818 Coruscant', 'yoda@coruscant.edu', '(211) 555-1111', 'Jedi Master'),
+('QuiGon', NULL, 'Jinn', '3547 Coruscant', 'quigon@oldglobe.edu', '(211) 555-4444', 'Jedi Master');
 
 INSERT INTO Suppliers ( SupplierName, Country, Address, PhoneNumber, ContactPerson, Notes )
 VALUES

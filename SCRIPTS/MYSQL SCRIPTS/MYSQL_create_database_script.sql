@@ -5,8 +5,9 @@ USE PACKT_ONLINE_SHOP;
 CREATE TABLE Customers
 (
 	CustomerID INT NOT NULL AUTO_INCREMENT,
-	FirstName CHAR(50) NOT NULL,
-	LastName CHAR(50) NOT NULL,
+	FirstName CHAR(50) NULL,
+    MiddleName CHAR(50) NULL,
+	LastName CHAR(50) NULL,
 	Address CHAR(250) NULL,
 	Email CHAR(200) NULL,
 	Phone CHAR(50) NULL,
@@ -48,6 +49,7 @@ CREATE TABLE Payments
 	PaymentRef CHAR(50) NULL,
 	Amount DECIMAL(10, 2) NOT NULL,
 	Notes VARCHAR(750) NULL,
+	BalanceNotes VARCHAR(750) NULL,
     PRIMARY KEY (PaymentID, OrderID)
 );
 
