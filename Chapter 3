@@ -65,5 +65,47 @@ Example 3:
 ALTER TABLE OrderItems 
 DROP FOREIGN KEY ProductID 
 
+Example 4
+
+/*
+How to present employee and department data in two tables and build the relationship between Department and employee table.
+
+Create DEPARTMENT table with the following data
+ColumnName DataType Size Key
+DeptNo NUMBER Primary Key
+DName VARCHAR2 20 UNIQUE and NOT NULL
+Dlocation VARCHAR2(30) UNIQUE and NOT NULL
+*/
+CREATE TABLE DEPARTMENT
+(
+DeptNo NUMBER PRIMARY KEY,
+Dname VARCHAR2(30) UNIQUE NOT NULL,
+Dlocation VARCHAR2(30) UNIQUE NOT NULL
+)
+/*
+Create EMPLOYEE table with the following data
+ColumnName DataType Size Key
+eNo CHAR 4 PRIMARY KEY
+eName VARCHAR2 30 NOT NULL
+Job VARCHAR2 30
+MANAGER CHAR 4
+JDate TIMESTAMP NOT NULL
+Gender CHAR 1 'M' OR 'F' 
+Salary NUMBER 8,2 DEFAULT 0
+Comission NUMBER 8,2 DEFAULT 0
+Deptno NUMBER 2 FOREIGN KEY REFERENCES DEPARTMENT TABLE, DEPTNO column
+*/
+CREATE TABLE EMPLOYEE 
+(
+eNo CHAR(4) PRIMARY KEY,
+eName VARCHAR2(30) NOT NULL,
+Job VARCHAR2(30) NOT NULL,
+MANAGER CHAR(4),
+JDate TIMESTAMP NOT NULL,
+Gender CHAR(1) CONSTRAINT Gender_CHK GENDER('M','F'),
+Salary NUMBER(8,2) DEFAULT 0,
+Comission NUMBER(8,2) DEFAULT 0,
+Deptno NUMBER(2) FOREIGN KEY REFERENCES DEPARTMENT(Deptno)
+)
 
 
