@@ -1,7 +1,7 @@
 USE [PACKT_ONLINE_SHOP]
 GO
 
-INSERT INTO customers ( FirstName, MiddleName, LastName, [Address], Email, Phone, Notes )
+INSERT INTO Customers ( FirstName, MiddleName, LastName, [Address], Email, Phone, Notes )
 VALUES
 ('Joe', 'Greg', 'Doaks', '2356 Elm St.', 'joedoaks@sfghwert.com', '(310) 555-1212', 'A note'),
 ('Paul', 'Muad-Dib', 'Atreides', '123 Caladan Drive', 'patreides@sietchtabr.com', '(818) 555-3678', 'Outworlder, now a Fremen'),
@@ -21,7 +21,7 @@ VALUES
 ('QuiGon', NULL, 'Jinn', '3547 Coruscant', 'quigon@oldglobe.edu', '(211) 555-4444', 'Jedi Master')
 
 
-INSERT INTO suppliers ( SupplierName, Country, [Address], PhoneNumber, ContactPerson, Notes )
+INSERT INTO Suppliers ( SupplierName, Country, [Address], PhoneNumber, ContactPerson, Notes )
 VALUES
 ('Acme Systems', 'Switzerland', '123 Capital Drive', '(818) 555-3456', 'Smith Johns', 'spaceship company'),
 ('Amalgamated Software', 'Antarctica', '771 South Pole Ave.', '(415) 555-2347', 'Smith Johns', 'software company'),
