@@ -468,7 +468,7 @@ WHERE	Productid = 3;
 BEGIN TRANSACTION;
 
 UPDATE	Products
-SET		AvailableQuantity = 150--Original value = 1000
+SET		AvailableQuantity = 150 --Original value = 1000
 WHERE	ProductID = 3
 
 -- COMMIT TRANSACTION;
@@ -486,7 +486,7 @@ WHERE	Productid = 3;
 START TRANSACTION;
 
 UPDATE	Products
-SET		AvailableQuantity = 150#Original value = 1000
+SET		AvailableQuantity = 150 #Original value = 1000
 WHERE ProductID = 3;
 
 # COMMIT;
