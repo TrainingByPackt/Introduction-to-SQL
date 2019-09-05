@@ -80,14 +80,14 @@ USE PACKT_ONLINE_SHOP;
 
 SELECT	CustomerID, FirstName, MiddleName, LastName, Address,
 		Email, Phone, Notes
-FROM		customers
+FROM		Customers
 WHERE	email = 'jtkirk@NCC1701Enterprise.gov';
 
 
 USE PACKT_ONLINE_SHOP;
 
 SELECT	*
-FROM		customers
+FROM		Customers
 WHERE	email LIKE '%NCC1701Enterprise.gov%';
 
 
@@ -284,7 +284,7 @@ USE PACKT_ONLINE_SHOP;
 SELECT	COALESCE(FirstName, ' ') + ' ' +
 		COALESCE(MiddleName, 'SUBSTITUTE MIDDLE NAME') + ' ' +
 		COALESCE(LastName, ' ') as 'CombinedName'
-FROM		customers;
+FROM		Customers;
 
 
 /****** EXERCISE 5 ******/
@@ -296,7 +296,7 @@ USE PACKT_ONLINE_SHOP;
 SELECT	CONCAT(COALESCE(FirstName, ' '), ' ',
 		COALESCE(MiddleName, 'SUBSTITUTE MIDDLE NAME'), ' ',
 		COALESCE(LastName, ' ')) as 'CombinedName'
-FROM		customers;
+FROM		Customers;
 
 
 --	SQL Server:
