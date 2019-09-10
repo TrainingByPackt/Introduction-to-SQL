@@ -105,7 +105,7 @@ rollno char(4) ,
 studentName varchar(30),
 date_of_birth date,
 marks smallint NOT NULL,
-CONSTRAINT stud_ck PRIMARY KEY (rollno, name)
+CONSTRAINT stud_ck PRIMARY KEY (rollno, studentName)
 );
 
 /*
