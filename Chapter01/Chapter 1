@@ -5,7 +5,7 @@ ColumnName DataType Size Key
 rollNo char 4 Primary Key
 studentName varchar 30  NOT NULL
 Grade CHAR 1 NOT NULL
-Age  NUMBER NOT NULL
+Age  INT NOT NULL
 Course VARCHAR 50 NOT NULL*/
 
 CREATE TABLE student
@@ -13,7 +13,7 @@ CREATE TABLE student
 rollNo char(4) PRIMARY KEY,
 studentName varchar(30) NOT NULL,
 Grade CHAR(1) NOT NULL,
-Age INT NIT NYLL,
+Age INT NOT NULL,
 course VARCHAR(50) NOT NULL
 );
 
@@ -104,7 +104,7 @@ CREATE TABLE student
 rollno char(4) ,
 studentName varchar(30),
 date_of_birth date,
-marks number(3) NOT NULL,
+marks smallint NOT NULL,
 CONSTRAINT stud_ck PRIMARY KEY (rollno, name)
 );
 
