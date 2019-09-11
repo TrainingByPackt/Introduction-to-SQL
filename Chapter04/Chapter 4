@@ -95,7 +95,7 @@ SELECT * from tb_department
 
 Example 7:
 
---let’s delete the rows where departmentNo is ‘>’ 4. This will delete the two rows where departmentNo is 5 and 6.
+--let’s delete the rows where departmentNo is ‘>’ 4. This will delete the three rows where departmentNo is 5, 6 and 7.
 
 DELETE from tb_department where departmentNo>4; 
 
