@@ -139,7 +139,7 @@ mysql> ALTER TABLE tb_department AUTO_INCREMENT = 5;
 
 --Now, Perform the insert statement
 
-mysql> insert into departmentTwo(departmentname,departmentLoc) values('Sales','LV'); 
+mysql> insert into tb_department(departmentname,departmentLoc) values('Sales','LV'); 
 
 mysql> select * from tb_department; 
 /*
