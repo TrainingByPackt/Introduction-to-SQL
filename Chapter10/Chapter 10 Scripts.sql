@@ -526,7 +526,7 @@ END;
 GO
 
 --	MySQL:
-
+DELIMITER $$
 CREATE DEFINER =`root`@`localhost` FUNCTION `fnProductTotalOrderQty`(ProductID INT)
 RETURNS INT
 DETERMINISTIC
@@ -555,7 +555,7 @@ SET	retVal = (
 				WHERE	OI.Productid = ProductID
 			);
 	RETURN retVal;
-END
+END$$
 
 
 /****** TRIGGERS ******/
