@@ -461,7 +461,7 @@ SELECT packt_online_shop.fnTotalSalesRvnByCust (3);
 /****** EXERCISE 5 ******/
 
 --	MySQL:
-
+DELIMITER $$
 CREATE FUNCTION `fnCountCustomerOrders` (CustomerID Integer)
 RETURNS INTEGER
 DETERMINISTIC
@@ -485,7 +485,7 @@ BEGIN
 			);
 
 	RETURN(retVal);
-END
+END$$
 
 
 /****** ACTIVITY 2 SOLUTION ******/
