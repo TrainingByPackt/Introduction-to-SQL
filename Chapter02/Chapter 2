@@ -60,7 +60,7 @@ Example 7:
 
 --Add a new column to the existing Customer table, called ZipCode, which will contain the ZIP code. 
 
-ALTER TABLE Customer 
+ALTER TABLE Customers 
 ADD COLUMN ZipCode INT CONSTRAINT CHK_ZipCode 
 CHECK ([ZipCode] LIKE '[0-9][0-9][0-9][0-9][0-9]'); 
 
@@ -69,7 +69,7 @@ Example 8:
 How to modify an existing column in a table. This is done using the MODIFY clause with the ALTER TABLE command. 
 To expand the character limit for the firstName and the lastName columns of the Customer table, run the following command
 */
-ALTER TABLE Customer 
+ALTER TABLE Customers 
   MODIFY COLUMN firstName char(100), 
   MODIFY COLUMN lastName char(100) 
 
