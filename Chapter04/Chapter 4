@@ -304,7 +304,7 @@ mysql> select * from tb_employees;
 
 UPDATE tb_employees 
 SET 
-   EmailAddress = 'Ava-May.Rodgers@awesomenes.com' 
+   Email = 'Ava-May.Rodgers@awesomenes.com' 
 WHERE empno = 3 
 
 Example 12:
