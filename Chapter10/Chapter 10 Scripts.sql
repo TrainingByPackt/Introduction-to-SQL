@@ -13,7 +13,7 @@ SET @var1 = 3 -- 3. Set @var1 to 3
 
 SELECT @var1 -- 4. Output the value of @var1
 
-SET @var1 = @var1 – 7 -- 5. Subtract 7 from @var1
+SET @var1 = @var1-7 -- 5. Subtract 7 from @var1
 
 SELECT @var1 -- 6. Output the value of @var1
 
@@ -32,7 +32,7 @@ SET @var1 = 3; -- 3. Set @var1 to 3
 
 SELECT @var1; -- 4. Output the value of @var1
 
-SET @var1 = @var1 – 7; -- 5. Subtract 7 from @var1
+SET @var1 = @var1-7; -- 5. Subtract 7 from @var1
 
 SELECT @var1; -- 6. Output the value of @var1
 
@@ -62,7 +62,7 @@ ORDER BY	ProductName;
 
 CREATE PROCEDURE spFilterProductsByNRP
 
-	@priceLevelfloat
+	@priceLevel float
 
 AS
 
@@ -81,7 +81,7 @@ SELECT	ProductName, WholesalePrice, NetRetailPrice,
 		UnitKGWeight
 FROM		products
 WHERE	NetRetailPrice <= @priceLevel
-ORDER	BYProductName;
+ORDER	BY ProductName;
 
 
 /****** EXERCISE 1 ******/
