@@ -105,7 +105,7 @@ WHERE	O.OrderDate <= @orderDate
 ORDER BY	'Customer Name';
 
 --	MySQL:
-
+DELIMITER $$
 CREATE PROCEDURE `spFilterProductsByNRP` (IN priceLevel FLOAT)
 
 BEGIN
@@ -125,9 +125,9 @@ SELECT	ProductName, WholesalePrice, NetRetailPrice,
 		UnitKGWeight
 FROM		products
 WHERE	NetRetailPrice <= priceLevel
-ORDER	BYProductName;
+ORDER	BY ProductName;
 
-END
+END$$
 
 
 /****** EXERCISE 2 ******/
