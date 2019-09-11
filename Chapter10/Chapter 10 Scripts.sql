@@ -90,7 +90,7 @@ ORDER	BY ProductName;
 
 CREATE PROCEDURE spCustomerOrders
 
-	@orderDateDatetime
+	@orderDate Datetime
 
 AS
 
