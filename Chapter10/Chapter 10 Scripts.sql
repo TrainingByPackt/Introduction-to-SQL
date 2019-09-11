@@ -180,8 +180,8 @@ DELIMITER ;
 
 ALTER PROCEDURE spFilterProductsByNRP
 
-	@priceLevelfloat,
-	@unitWeightfloat
+	@priceLevel float,
+	@unitWeight float
 
 AS
 
