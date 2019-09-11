@@ -25,9 +25,8 @@ VALUES (
 Example 2:
 
 /* Perform multiple insert statement*/
-
 INSERT INTO department 
-            (departartmentno, 
+            (departmentNo, 
              departmentname, 
              departmentloc) 
 VALUES      ( 40, 
