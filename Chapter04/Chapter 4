@@ -311,7 +311,7 @@ Example 12:
 
 --we are going to change the modified date on all the rows. We do this using the following query: 
 
-mysql> update department set departmentEstDate=now(); 
+mysql> update tb_department set departmentEstDate=now(); 
 
 Example 13:
 
@@ -326,10 +326,9 @@ mysql> UPDATE tb_department
  
  -- Update using Alias
  
- UPDATE D 
-    SET departmentLoc='GA', 
-    departmentEstDate  = Now()+1 
-FROM tb_department D 
+UPDATE tb_department D
+    SET D.departmentLoc='GA', 
+    D.departmentEstDate  = Now()+1;
 
 
 Example 15:
@@ -394,10 +393,10 @@ Example 18:
 
 ---Update using computed values
 
-UPDATE tb_mployees 
+UPDATE tb_employees 
     SET 
         Salary = Salary * 1.17 
-    WHERE Rating = 5 
+    WHERE empno = 3 ;
     
  ---You could even use a compound operator (+=, *=, etc.) to update the column values. 
 
@@ -529,9 +528,9 @@ WHERE  departmentno IN(SELECT departmentno
        t.create_time, 
        t.update_time, 
        t.table_collation, 
-       t.table_comment 
+       t.table_comment
 FROM   information_schema.tables t 
-WHERE  information_schema.tables.table_schema = 'world' 
+WHERE  t.table_schema = 'world'  
 
 Example 27:
 
