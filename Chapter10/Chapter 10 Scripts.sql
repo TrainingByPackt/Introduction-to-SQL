@@ -203,7 +203,7 @@ WHERE	NetRetailPrice <= @priceLevel AND
 ORDER BY ProductName;
 
 --	MySQL:
-
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spFilterProductsByNRP`(IN priceLevel FLOAT, IN unitWeight FLOAT)
 
 BEGIN
@@ -227,7 +227,7 @@ WHERE	NetRetailPrice <= priceLevel AND
 		UnitKGWeight <= unitWeight # Filter with unitWeight parameter value
 ORDER BY	ProductName;
 
-END
+END$$
 
 
 /****** ACTIVITY 1 SOLUTION ******/
