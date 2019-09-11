@@ -418,7 +418,7 @@ END;
 
 
 --	MySQL:
-
+DELIMITER $$
 CREATE FUNCTION `fnTotalSalesRvnByCust` (CustomerID Integer)
 RETURNS FLOAT
 DETERMINISTIC
@@ -451,7 +451,7 @@ BEGIN
 	END IF;
 
 	RETURN (retVal);
-END
+END$$
 
 
 SELECT packt_online_shop.fnTotalSalesRvnByCust (12);
