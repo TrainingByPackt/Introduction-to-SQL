@@ -381,7 +381,7 @@ SELECT	CONCAT(FirstName, ' ', LastName) AS 'Customer Name',
 FROM		Customers
 
 
-SUM(OI.Quantity * OI.UnitPrice)
+
 
 
 /****** EXERCISE 4 ******/
