@@ -378,7 +378,7 @@ Example 17:
         SELECT  
             * 
         FROM tb_employees 
-where rating>5 
+where empno>5 
 ORDER BY salary desc 
 LIMIT 100 
 ) 
