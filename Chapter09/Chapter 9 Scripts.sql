@@ -33,7 +33,7 @@ WHERE	Products.ProductID NOT IN
 ORDER BY	Products.ProductID;
 
 
-SELECT	ProductID FROM OrderItems
+SELECT	ProductID FROM OrderItems;
 
 
 /****** EXERCISE 1 ******/
@@ -48,7 +48,7 @@ SELECT	OrderID FROM ORDERITEMS;
 
 USE		packt_online_shop;
 SELECT	O.OrderID
-FROM		Orders O
+FROM		Orders O;
 
 --	STEP 3:
 
@@ -119,7 +119,7 @@ SELECT	ProductName, NetRetailPrice, UnitKGWeight,
 		CASE
 			WHEN (NetRetailPrice * UnitKGWeight) <= 1.0 THEN 'Cheap'
 		END AS 'Shipping Cost'
-FROM		products
+FROM		products;
 
 --	STEP 3:
 
@@ -202,7 +202,7 @@ FROM		customers INNER JOIN orders ON
 		INNER JOIN orderitems ON
 		orders.OrderID = orderitems.OrderID
 		INNER JOIN products ON
-		orderitems.ProductID = products.ProductID
+		orderitems.ProductID = products.ProductID;
 
 
 --	STEP 2:
@@ -222,7 +222,7 @@ FROM		customers INNER JOIN orders ON
 		INNER JOIN orderitems ON
 		orders.OrderID = orderitems.OrderID
 		INNER JOIN products ON
-		orderitems.ProductID = products.ProductID
+		orderitems.ProductID = products.ProductID;
 
 
 --	STEP 3:
@@ -244,7 +244,7 @@ FROM		customers INNER JOIN orders ON
 		INNER JOIN orderitems ON
 		orders.OrderID = orderitems.OrderID
 		INNER JOIN products ON
-		orderitems.ProductID = products.ProductID
+		orderitems.ProductID = products.ProductID;
 
 
 --	STEP 4:
