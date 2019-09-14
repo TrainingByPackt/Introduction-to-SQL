@@ -73,3 +73,60 @@ ALTER TABLE Customers /* Replaced Customer with Customers ,Script verified and T
   MODIFY COLUMN firstName char(100), 
   MODIFY COLUMN lastName char(100) 
 
+Sep 09132019 /* script added by Prashanth*/
+
+
+/*
+Create a database called PacktDB. Create a table within this database, called AuthorProfile. The AuthorProfile table should contain information about the Author and field used in the table authorId is of CHAR, firstName is of CHAR(10), LastName is of CHAR(10), title is VARCHAR(20),genre is of VARCHAR(30), ISBN is of VARCHAR(20).  Try to increase the size of the title and genre fields to VARCHAR(50). 
+
+ */
+
+CREATE DATABASE packtdb;  
+ 
+USE packtdb;  
+ 
+CREATE TABLE authorprofile  
+  (  
+     a_id        INT NOT NULL,  
+     a_firstname CHAR(50) NOT NULL,  
+     a_lastname  CHAR(50),  
+     a_booktitle VARCHAR(50),  
+     a_genre     VARCHAR(10),  
+     isbn        VARCHAR(20)  
+  );  
+ 
+The above table authorprofile created with no constraints. Now, Let’s add a composite key on columns a_id and a_firstname 
+
+ALTER TABLE authorprofile  
+  ADD PRIMARY KEY (a_id, a_firstname);  
+ 
+/*
+Note: A Primary Key contain more than one columns known as a Composite Key 
+
+The good practice is always name the constraint with a valid identifiers. In the following example, compsite key is created on a_id and a_firstname columns with a constraint name pk_id_firstname. 
+*/
+ 
+ALTER TABLE authorprofile  
+  ADD CONSTRAINT pk_id_firstname PRIMARY KEY (a_id, a_firstname); 
+/*
+Next, how to drop the composite key on the table authorprofile. Now, you might you have realized on how easy is to drop the constraint with a name. If not, we need to query the system catalog to get the constraint names. You'll see the example in the next chapters. 
+*/
+ALTER TABLE authorprofile  
+  DROP CONSTRAINT pk_id_firstname 
+
+ 
+
+/*With the AuthorProfile table that you have, change the table structure, so that instead of using the authorId CHAR type to VARCHAR(10)*/ 
+
+ ALTER TABLE customer  
+  modify COLUMN a_id VARCHAR(20) 
+
+ 
+/*
+Now, Let's run the DROP TABLE command to drop the table authorprofile and then DROP DATABASE command to drop the packtdb database 
+*/
+
+DROP TABLE authorprofile 
+
+DROP DATABASE packtb 
+
