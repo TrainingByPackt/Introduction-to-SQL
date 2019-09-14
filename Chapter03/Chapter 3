@@ -110,6 +110,9 @@ Deptno NUMBER(2) FOREIGN KEY REFERENCES DEPARTMENT(Deptno)
 
 
 /*
+
+Activity Section
+
 An example of FOREIGN KEY constraint using ON DELETECASCADE option is as follows
 
 Create the Customers(Parent) table
