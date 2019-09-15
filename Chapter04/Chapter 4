@@ -151,13 +151,13 @@ Example 9:
 
 --In-order to reset the auto_increment column, run the following ALTER STATEMENT 
 
-mysql> ALTER TABLE tb_department AUTO_INCREMENT = 5; 
+mysql> ALTER TABLE department AUTO_INCREMENT = 5; 
 
 --Now, Perform the insert statement
 
 mysql> insert into departmentTwo(departmentname,departmentLoc) values('Sales','LV'); 
 
-mysql> select * from tb_department; 
+mysql> select * from department; 
 /*
 +--------------+----------------+---------------+---------------------+ 
 
@@ -213,7 +213,7 @@ Example 11:
 
 /* Update Example*/
 
---To demonstrate, tb_employees table is created with empno and emailaddress columns
+--To demonstrate, employees table is created with empno and emailaddress columns
 
 USE EMPLOYEE;
 
@@ -289,7 +289,7 @@ VALUES
     3
 )
 
-mysql> select * from tb_employees;
+mysql> select * from employees;
 -------+-----------+----------+------------+--------+------------+-----------+----------+-----------------------------------+----------+
  empno | firstname | lastname | birthdate  | gender | joindate   | salary    | comm     | email                             | departno |
 -------+-----------+----------+------------+--------+------------+-----------+----------+-----------------------------------+----------+
@@ -347,7 +347,7 @@ mysql> UPDATE department
  UPDATE D 
     SET departmentLoc='GA', 
     departmentEstDate  = Now()+1 
-FROM tb_department D 
+FROM department D 
 
 
 Example 15:
@@ -366,7 +366,7 @@ Exmaple 16:
 UPDATE employees SET comm=1000 
 WHERE empno IN ( 
     SELECT empno FROM ( 
-        SELECT empno FROM tb_employees where comm<=500 
+        SELECT empno FROM employees where comm<=500 
         ORDER BY salary desc, comm ASC   
         LIMIT 0, 3 
     ) stg 
@@ -428,7 +428,7 @@ Example 19:
  
  --Update with SQL Joins 
 UPDATE employees e 
-       INNER JOIN tb_department d 
+       INNER JOIN department d 
                ON e.departno = d.departmentno 
                   AND d.departmentname = 'ENGG' 
 SET    salary = salary + ( salary * 15 / 100 ) 
@@ -442,7 +442,7 @@ Example 20:
 DELETE FROM employees 
     WHERE empno >1234 
 
----If you would like to remove some fifty random rows from the tb_employees table 
+---If you would like to remove some fifty random rows from the employees table 
 
 DELETE FROM employees LIMIT 50 
 
@@ -570,7 +570,7 @@ ORDER  BY t.table_name
 
 Exmaple 28:
 
----The following query IS used TO list ALL the constraints that are created ON the tb_department TABLE. you can exclude the c.table_name conditional clause TO list ALL the constraints that are created IN the world DATABASE.
+---The following query IS used TO list ALL the constraints that are created ON the department TABLE. you can exclude the c.table_name conditional clause TO list ALL the constraints that are created IN the world DATABASE.
 
 SELECT c.table_name,
        c.column_name, 
@@ -583,7 +583,7 @@ AND    c.table_name = 'department'
  
 Exmaple 29:
 
-----The following query IS used TO list ALL the indexes that are created ON the tb_department TABLE. you can exclude the c.table_name conditional clause TO list ALL the details OF ‘world’ DATABASE.
+----The following query IS used TO list ALL the indexes that are created ON the department TABLE. you can exclude the c.table_name conditional clause TO list ALL the details OF ‘world’ DATABASE.
 
 SELECT s.table_name,
        s.column_name, 
