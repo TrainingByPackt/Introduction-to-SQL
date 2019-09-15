@@ -287,7 +287,7 @@ VALUES
     1000,
     'Charlene.Holloway@awesomeness.com',
     3
-)
+);
 
 mysql> select * from employees;
 -------+-----------+----------+------------+--------+------------+-----------+----------+-----------------------------------+----------+
@@ -344,10 +344,9 @@ mysql> UPDATE department
  
  -- Update using Alias
  
- UPDATE D 
-    SET departmentLoc='GA', 
-    departmentEstDate  = Now()+1 
-FROM department D 
+ UPDATE department D 
+    SET D.departmentLoc='GA', 
+    D.departmentEstDate  = Now()+1;
 
 
 Example 15:
@@ -396,13 +395,13 @@ Example 17:
         SELECT  
             * 
         FROM employees 
-where rating>5 
+where comm>500 
 ORDER BY salary desc 
 LIMIT 100 
 ) 
 UPDATE employees SET comm=2492 
 WHERE empno IN  
-(SELECT empno FROM employeeCTE) 
+(SELECT empno FROM employeeCTE);
 
 --select the rows
 SELECT * 
@@ -508,7 +507,7 @@ Example 24:
 
 --Deleting duplicates using Partition By clause and CTE expression
 
-WITH cte 
+WITH departmentcte 
      AS (SELECT *, 
                 Row_number() 
                   OVER ( 
@@ -517,7 +516,7 @@ WITH cte
          FROM   department) 
 DELETE FROM department 
 WHERE  departmentno IN (SELECT departmentno 
-                        FROM   cte 
+                        FROM   departmentcte 
                         WHERE  row_num <> 1) 
                         
                         
