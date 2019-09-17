@@ -76,13 +76,13 @@ ORDER BY ProductName
  /****** UNION ******/
 
 
- SELECT CONCAT(Customers.FirstName,' ',Customers.LastName) as [FULL NAME],
-		Customers.Phone AS [Phone Number]
-	FROM Customers
-	UNION 
-	SELECT    Suppliers.ContactPerson AS[Full Name],
-		   Suppliers.PhoneNumber AS[Phone Number]
-	FROM Suppliers
+ SELECT CONCAT(Customers.FirstName,' ',Customers.LastName) as 'FULL NAME', 
+Customers.Phone AS 'Phone Number' 
+FROM Customers 
+UNION  
+SELECT    Suppliers.ContactPerson AS 'Full Name', 
+Suppliers.PhoneNumber AS 'Phone Number' 
+FROM Suppliers;
 
 
 	
@@ -91,7 +91,7 @@ ORDER BY ProductName
 
 SELECT Orders.OrderNumber,
 	   Products.ProductName,
-	   CONCAT( Customers.FirstName,' ',Customers.LastName) As [Customer Name],
+	   CONCAT( Customers.FirstName,' ',Customers.LastName) As 'Customer Name',
 	   Suppliers.SupplierName,
 	   ProductCategories.ProductCategoryName
 
@@ -110,10 +110,10 @@ from OrderItems join Orders on OrderItems.OrderID = Orders.OrderID
  /****** ACTIVITY 3 SOLUTION  ******/
 
 
- select distinct Suppliers.ContactPerson AS [Name],'Supplier' AS [Type]
+ select distinct Suppliers.ContactPerson AS 'Name','Supplier' AS 'Type'
  from OrderItems left join Products on OrderItems.ProductID = Products.ProductID
 				 left join Suppliers on Products.SupplierID = Suppliers.SupplierID	
 union 
-select distinct CONCAT(Customers.FirstName,' ',Customers.LastName) as [Name], 'Customer' as [Type]
+select distinct CONCAT(Customers.FirstName,' ',Customers.LastName) as 'Name', 'Customer' as 'Type'
 from OrderItems join Orders on OrderItems.OrderID = Orders.OrderID
 join Customers  on orders.CustomerID = Customers.CustomerID
