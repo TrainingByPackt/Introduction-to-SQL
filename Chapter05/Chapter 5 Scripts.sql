@@ -4,7 +4,7 @@
 
 SELECT * FROM ProductCategories;
 
-
+/*Selects datetime at the moment*/
 SELECT GETDATE();
 
 /* SELECTING  LIMITED COLUMNS  */

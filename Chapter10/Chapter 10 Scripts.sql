@@ -13,7 +13,7 @@ SET @var1 = 3 -- 3. Set @var1 to 3
 
 SELECT @var1 -- 4. Output the value of @var1
 
-SET @var1 = @var1 – 7 -- 5. Subtract 7 from @var1
+SET @var1 = @var1-7 -- 5. Subtract 7 from @var1
 
 SELECT @var1 -- 6. Output the value of @var1
 
@@ -32,7 +32,7 @@ SET @var1 = 3; -- 3. Set @var1 to 3
 
 SELECT @var1; -- 4. Output the value of @var1
 
-SET @var1 = @var1 – 7; -- 5. Subtract 7 from @var1
+SET @var1 = @var1-7; -- 5. Subtract 7 from @var1
 
 SELECT @var1; -- 6. Output the value of @var1
 
@@ -62,7 +62,7 @@ ORDER BY	ProductName;
 
 CREATE PROCEDURE spFilterProductsByNRP
 
-	@priceLevelfloat
+	@priceLevel float
 
 AS
 
@@ -81,7 +81,7 @@ SELECT	ProductName, WholesalePrice, NetRetailPrice,
 		UnitKGWeight
 FROM		products
 WHERE	NetRetailPrice <= @priceLevel
-ORDER	BYProductName;
+ORDER	BY ProductName;
 
 
 /****** EXERCISE 1 ******/
@@ -90,7 +90,7 @@ ORDER	BYProductName;
 
 CREATE PROCEDURE spCustomerOrders
 
-	@orderDateDatetime
+	@orderDate Datetime
 
 AS
 
@@ -105,7 +105,7 @@ WHERE	O.OrderDate <= @orderDate
 ORDER BY	'Customer Name';
 
 --	MySQL:
-
+DELIMITER $$
 CREATE PROCEDURE `spFilterProductsByNRP` (IN priceLevel FLOAT)
 
 BEGIN
@@ -125,9 +125,9 @@ SELECT	ProductName, WholesalePrice, NetRetailPrice,
 		UnitKGWeight
 FROM		products
 WHERE	NetRetailPrice <= priceLevel
-ORDER	BYProductName;
+ORDER	BY ProductName;
 
-END
+END$$
 
 
 /****** EXERCISE 2 ******/
@@ -180,8 +180,8 @@ DELIMITER ;
 
 ALTER PROCEDURE spFilterProductsByNRP
 
-	@priceLevelfloat,
-	@unitWeightfloat
+	@priceLevel float,
+	@unitWeight float
 
 AS
 
@@ -203,7 +203,7 @@ WHERE	NetRetailPrice <= @priceLevel AND
 ORDER BY ProductName;
 
 --	MySQL:
-
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spFilterProductsByNRP`(IN priceLevel FLOAT, IN unitWeight FLOAT)
 
 BEGIN
@@ -227,7 +227,7 @@ WHERE	NetRetailPrice <= priceLevel AND
 		UnitKGWeight <= unitWeight # Filter with unitWeight parameter value
 ORDER BY	ProductName;
 
-END
+END$$
 
 
 /****** ACTIVITY 1 SOLUTION ******/
@@ -381,7 +381,7 @@ SELECT	CONCAT(FirstName, ' ', LastName) AS 'Customer Name',
 FROM		Customers
 
 
-SUM(OI.Quantity * OI.UnitPrice)
+
 
 
 /****** EXERCISE 4 ******/
@@ -418,7 +418,7 @@ END;
 
 
 --	MySQL:
-
+DELIMITER $$
 CREATE FUNCTION `fnTotalSalesRvnByCust` (CustomerID Integer)
 RETURNS FLOAT
 DETERMINISTIC
@@ -451,7 +451,7 @@ BEGIN
 	END IF;
 
 	RETURN (retVal);
-END
+END$$
 
 
 SELECT packt_online_shop.fnTotalSalesRvnByCust (12);
@@ -461,7 +461,7 @@ SELECT packt_online_shop.fnTotalSalesRvnByCust (3);
 /****** EXERCISE 5 ******/
 
 --	MySQL:
-
+DELIMITER $$
 CREATE FUNCTION `fnCountCustomerOrders` (CustomerID Integer)
 RETURNS INTEGER
 DETERMINISTIC
@@ -485,7 +485,7 @@ BEGIN
 			);
 
 	RETURN(retVal);
-END
+END$$
 
 
 /****** ACTIVITY 2 SOLUTION ******/
@@ -526,7 +526,7 @@ END;
 GO
 
 --	MySQL:
-
+DELIMITER $$
 CREATE DEFINER =`root`@`localhost` FUNCTION `fnProductTotalOrderQty`(ProductID INT)
 RETURNS INT
 DETERMINISTIC
@@ -555,7 +555,7 @@ SET	retVal = (
 				WHERE	OI.Productid = ProductID
 			);
 	RETURN retVal;
-END
+END$$
 
 
 /****** TRIGGERS ******/

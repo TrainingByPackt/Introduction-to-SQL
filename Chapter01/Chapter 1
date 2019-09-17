@@ -3,30 +3,31 @@ Example 1:
 How to create a STUDENT table with the following data
 ColumnName DataType Size Key
 rollNo char 4 Primary Key
-studentName varchar2 30  NOT NULL
+studentName varchar 30  NOT NULL
 Grade CHAR 1 NOT NULL
-Age  NUMBER NOT NULL
-Course VARCHAR2 50 NOT NULL*/
+Age  INT NOT NULL
+Course VARCHAR 50 NOT NULL*/
 
 CREATE TABLE student
 (
 rollNo char(4) PRIMARY KEY,
-studentName varchar2(10),
-Grade CHAR(3),
-Age INT
+studentName varchar(30) NOT NULL,
+Grade CHAR(1) NOT NULL,
+Age INT NOT NULL,
+course VARCHAR(50) NOT NULL
 );
 
 OR
-
+/*Below Create table creates table with rollno as primary key with a specific name student_pk (This is Good Practice)*/
 CREATE TABLE student
 (
-rollNo char(4) PRIMARY KEY,
-studentName varchar2(10),
-Grade CHAR(3),
-Age INT,
+rollNo char(4) NOT NULL, 
+studentName varchar(30) NOT NULL,
+Grade CHAR(1) NOT NULL,
+Age INT NOT NULL,
+Course varchar(50) NOT NULL,
 CONSTRAINT student_pk PRIMARY KEY (rollNo)
 );
-
 /*
 Note:
 The table name can be of 30 characters in length at the maximum.The limitation varies from product to product.
@@ -48,7 +49,7 @@ Example 3:
 
 --How to SELECT without a column name or table?
 
-SELECT concat_ws(' ', 'My', 'first', 'query')
+SELECT concat(' ', 'My', 'first', 'query')
 
 Example 4:
 
@@ -100,11 +101,11 @@ Example 11:
 
 CREATE TABLE student
 (
-rollno char(4),
-name varchar2(10),
+rollno char(4) ,
+studentName varchar(30),
 date_of_birth date,
-marks number(3),
-CONSTRAINT stud_ck PRIMARY KEY (rollno, name)
+marks smallint NOT NULL,
+CONSTRAINT stud_ck PRIMARY KEY (rollno, studentName)
 );
 
 /*
