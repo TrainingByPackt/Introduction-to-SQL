@@ -67,10 +67,10 @@ SELECT ASCII('A')
 Select CHAR(65)
 
 
-SELECT CHARINDEX('ck', 'Packt') AS MatchIndex;
+SELECT LOCATE('ck', 'Packt') AS MatchIndex;
 
 
-SELECT CHARINDEX('ck', 'Packt',3) AS MatchIndex;
+SELECT LOCATE('ck', 'Packt',3) AS MatchIndex;
 
 SELECT CONCAT ( 'Happy ', 'Birthday ', 11, '/', '25' ) AS Result;
 
@@ -79,12 +79,12 @@ SELECT CONCAT_WS(',','1 Microsoft Way', NULL, NULL, 'Redmond', 'WA', 98052) AS A
 SELECT 'SQL' + ' is' + ' fun!';
 
 SELECT SOUNDEX('Green'), SOUNDEX('Greene'), DIFFERENCE('Green','Greene');
-
+/*diference function and its equivalent is not available in mysql*/
 
 SELECT SOUNDEX('Blotchet-Halls'), SOUNDEX('Greene'), DIFFERENCE('Blotchet-Halls', 'Greene');  
  
 
-DECLARE @d DATETIME = GETDATE();  
+DECLARE @d DATETIME = GETDATE(); 
 SELECT FORMAT( @d, 'dd/MM/yyyy', 'en-US' ) AS 'DateTime Result'  
        ,FORMAT(123456789,'###-##-####') AS 'Custom  Number Result';
 
@@ -92,7 +92,7 @@ SELECT FORMAT( @d, 'dd/MM/yyyy', 'en-US' ) AS 'DateTime Result'
 SELECT LEFT('abcdefg',2);  
 
 
-SELECT DATALENGTH('PACKT');
+SELECT LENGTH('PACKT');
 
 
 
@@ -103,9 +103,9 @@ SELECT
 @v2 = 'Test of 22 characters ';  
 SELECT LEN(@v1) AS [varchar LEN] , DATALENGTH(@v1) AS [varchar DATALENGTH];  
 SELECT LEN(@v2) AS [nvarchar LEN], DATALENGTH(@v2) AS [nvarchar DATALENGTH]; 
+/*query is not executing*/
 
-
-SELECT LEN('PACKT');
+SELECT LENGTH('PACKT');
 
 SELECT LOWER('PACKT');
 
@@ -113,20 +113,24 @@ SELECT LTRIM('     Five spaces are at the beginning of this string.')
 
 
 SELECT NCHAR(100)
+/*function NHCHAR is not available*/
 
 
 SELECT PATINDEX('%ter%', 'interesting data');
+/*function PATINDEX is not available*/
 
 SELECT PATINDEX('%en_ure%', 'please ensure the door is locked');  
 
 
 SELECT QUOTENAME('abc[]def');
+/*function QUOTENAME is not available*/
 
 
 SELECT REPLACE('abcdefghicde','cde','xxx'); 
 
 
 SELECT REPLICATE('PACKT ',4)
+/*function REPLICATE is not available*/
 
 SELECT REVERSE(1234) AS Reversed ;  
 
@@ -143,14 +147,17 @@ SELECT SOUNDEX ('Smith'), SOUNDEX ('Smythe');
 SELECT CONCAT('PACKT',SPACE(3),'BOOK');
 
 SELECT STR(123.45, 6, 1);  
+/*function STR is not available*/
 
 
-SELECT STUFF('abcdef', 2, 3, 'ijklmn');  
+SELECT STUFF('abcdef', 2, 3, 'ijklmn'); 
+/*function STUFF is not available*/
 
 
 SELECT SUBSTRING('abcdef', 2, 3); 
 
 SELECT TRANSLATE('2*[3+4]/{7-2}', '[]{}', '()()');
+/*function TRANSLATE is not available*/
 
 SELECT TRIM( '     test    ') ;
 
@@ -159,7 +166,8 @@ SELECT TRIM( '.,! ' FROM  '     #     test    .') ;
 
 DECLARE @nstring nchar(12);  
 SET @nstring = N'Åkergatan 24';  
-SELECT UNICODE(@nstring), NCHAR(UNICODE(@nstring));  
+SELECT UNICODE(@nstring), NCHAR(UNICODE(@nstring)); 
+/*query not working*/					
 
 
 
@@ -188,12 +196,12 @@ SELECT ATAN(45.0)
 
 DECLARE @x float = 35.175643, @y float = 129.44;  
 SELECT  ATN2(@y, @x);  
-
+/*query not working*/
 
 
 
 SELECT CEILING($123.45), CEILING($-123.45), CEILING($0.0);  
-
+/*query not working*/
 
 
 DECLARE @x float = 45
@@ -209,15 +217,15 @@ SELECT DEGREES(5)
 
 DECLARE @x float = 10
 SELECT EXP(@x)
-
+/*query not working*/
 
 SELECT FLOOR(123.45), FLOOR(-123.45), FLOOR($123.45);  
-
+/*query not working*/
 SELECT LOG (EXP (10));  
 
 DECLARE @x float = 145.175643
 SELECT log10(@x)
-
+/*query not working*/
 
 SELECT PI();  
 
@@ -236,19 +244,19 @@ SELECT SIGN(-125), SIGN(0), SIGN(564);
 
 DECLARE @x float = 90
 SELECT SIN(@x)
-
+/*query not working*/
 
 SELECT SQRT(4)
 
 
 
 SELECT SQUARE(4)
-
+/*change to power(x,y)*/
 
 
 DECLARE @x float = 90
 SELECT TAN(@x)
-
+/*query not working*/
 
 
 /******  Date and Time Value Functions  ******/
@@ -256,25 +264,29 @@ SELECT TAN(@x)
 Select CURRENT_TIMESTAMP
 
 SELECT DATEADD(year,2, '20060731');  
+/*function dateadd is not available*/
 
 SELECT DATEDIFF(day,
    '2007-05-07 09:53:01.0376635',
    '2007-05-08 09:53:01.0376635');  
+/*function DATEDIFF is not available*/
 
 SELECT DATEFROMPARTS ( 2010, 12, 31 )
-
+/*function DATEFROMPARTS is not available*/
 
 SELECT DATEPART(week, '2007-04-21 ')
+/*function DATEPART is not available*/
    
 SELECT DAY('2015-04-30 01:01:01.1234567');
 
 SELECT GETDATE()
-
+/*function GETDATE is not available*/
 
 SELECT GETUTCDATE()
+/*function GETUTCDATE is not available*/
 
 SELECT ISDATE('THIS IS NOT A DATE'),ISDATE('2019-08-31')
-
+/*function ISDATE is not available*/
 SELECT MONTH('2007-04-30');  
 
 
@@ -287,20 +299,21 @@ SELECT Year('2007-04-30');
 /******  Conversion Functions  ******/
 
 SELECT CAST(25.65 AS int), CAST(25.65 AS varchar);
-
+/*query not working*/
 SELECT Convert(int, 25.65), Convert(varchar, 25.65 ),  CONVERT(nvarchar(30), GETDATE(), 109); 
+/*query not working*/
 
 SELECT PARSE('€345,98' AS money USING 'de-DE') AS Result
-
+/*query not working*/
 SELECT PARSE('Monday, 13 December 2010' AS datetime2 USING 'en-US') AS Result; 
-
+/*query not working*/
 SELECT TRY_CAST('test' AS float) , TRY_CAST('12/31/2010' AS datetime2)
-
+/*query not working*/
 SELECT TRY_CONVERT(float, 'test') , TRY_CONVERT(datetime2, '12/31/2010')
-
+/*query not working*/
 
 SELECT TRY_PARSE('Jabberwokkie' AS datetime2 USING 'en-US'),TRY_PARSE('01/01/2011' AS datetime2)
-
+/*query not working*/
 
 /******  Activity Solutions  ******/
 
@@ -317,4 +330,5 @@ Select UPPER(CONCAT(FIRSTNAME,' ',LASTNAME,'-',LEFT(Phone,5))),
 		 DAY(getdate())as 'Day'
 
 from customers 
+/*query not working*/
 
